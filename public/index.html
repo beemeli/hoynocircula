@@ -18,34 +18,54 @@
             <option value="(bicicleta OR bici)">Bicicleta</option>
             <option value="(RTP OR camion)">Camión</option>
         </select>
-<!--HoyNoCircula AND coche AND posted:2016-01-01 AND sentiment:positive AND gender:male-->
+        <!--HoyNoCircula AND coche AND posted:2016-01-01 AND sentiment:positive AND gender:male-->
         <select id="sentimiento">
-              <option value="positive">Positivo</option>
-              <option value="negative">Negativo</option>
-              <option value="neutral">Neutral</option>            
-        </select>
-        
-        <select id="genero">
-              <option value="male">Hombres</option>
-              <option value="female">Mujeres</option>
+            <option value="positive">Positivo</option>
+            <option value="negative">Negativo</option>
+            <option value="neutral">Neutral</option>            
         </select>
 
-<div  onclick="generar_query1()">
-    Gráfica 1
-</div>
-<div  onclick="generar_query2()">
-    Gráfica 2
-</div>
-<div  onclick="generar_query3()">
-    Gráfica 3
-</div>
-<div  onclick="generar_query4()">
-    Gráfica 4
-</div>
-<div id="jsonresult">
-    
-    
-</div> 
+        <select id="genero">
+            <option value="male">Hombres</option>
+            <option value="female">Mujeres</option>
+        </select>
+        <select id="fecha">
+            <option value="posted:2016-04-05T00:00:00Z,2016-04-05T06:00:00Z">00:00 - 06:00</option>
+            <option value="posted:2016-04-05T06:00:00Z,2016-04-05T09:00:00Z">06:00 - 09:00</option>
+            <option value="posted:2016-04-05T09:00:00Z,2016-04-05T12:00:00Z">09:00 - 12:00</option>
+            <option value="posted:2016-04-05T12:00:00Z,2016-04-05T15:00:00Z">12:00 - 15:00</option>
+            <option value="posted:2016-04-05T15:00:00Z,2016-04-05T18:00:00Z">15:00 - 18:00</option>
+            <option value="posted:2016-04-05T18:00:00Z,2016-04-05T20:00:00Z">18:00 - 20:00</option>
+            <option value="posted:2016-04-05T20:00:00Z,2016-04-05T23:59:59Z">20:00 - 23:59</option>
+
+        </select>
+
+
+        <div  onclick="generar_query1()">
+            Gráfica 1
+        </div>
+        <div  onclick="generar_query2()">
+            Gráfica 2
+        </div>
+        <div  onclick="generar_query3()">
+            Gráfica 3
+        </div>
+        <div  onclick="generar_query4()">
+            Gráfica 4
+        </div>
+        <div  onclick="generar_query5()">
+            Gráfica 5
+        </div>
+        
+        
+        <div  onclick="generar_query6()">
+            Gráfica 6
+        </div>
+        
+        <div id="jsonresult">
+
+
+        </div> 
 
         <div style="width:100%;">
             <div class="display_logo">

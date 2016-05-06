@@ -275,49 +275,72 @@ function generar_query1(){
     //contarTweets(generadorquery(0));
     
     //generarValoresGrafica1();
-    
+        var fecha = "posted:2016-04-05";
+
     var genero = $("#genero").val();
     var transporte = $("#transporte").val();
 
-    generarValoresGrafica2("HoyNoCircula","","");//1
+    generarValoresGrafica2("HoyNoCircula",fecha,"","","");//1
     
 
 }
 
 function generar_query2(){
-
+    var fecha = "posted:2016-04-05";
     var genero = $("#genero").val();
     var transporte = $("#transporte").val();
 
-    generarValoresGrafica2("HoyNoCircula",transporte,"");//2
+    generarValoresGrafica2("HoyNoCircula",fecha,"",transporte,"");//2
     
 }
 function generar_query3(){
+    var fecha = "posted:2016-04-05";
 
     var genero = $("#genero").val();
     var transporte = $("#transporte").val();
 
-    generarValoresGrafica2("(DobleNoCircula OR DobleHoyNoCircula)","","");//3
+    generarValoresGrafica2("(DobleNoCircula OR DobleHoyNoCircula)",fecha,"","","");//3
 }
 function generar_query4(){
+    var fecha = "posted:2016-04-05";
 
     var genero = $("#genero").val();
     var transporte = $("#transporte").val();
 
-   generarValoresGrafica2("HoyNoCircula",transporte,genero);//4   
+   generarValoresGrafica2("HoyNoCircula",fecha,"",transporte,genero);//4   
 }
+function generar_query5(){
+    var fecha = $("#fecha").val();
+    var genero = $("#genero").val();
+    var transporte = $("#transporte").val();
 
-function generarValoresGrafica2(hoynocircula,transporte,genero){
+   generarValoresGrafica2("HoyNoCircula",fecha,"sinsentimientos","","");//4   
+}
+function generar_query6(){
+    var fecha = $("#fecha").val();
+    var genero = $("#genero").val();
+    var transporte = $("#transporte").val();
+
+   generarValoresGrafica2("HoyNoCircula",fecha,"sinsentimientos",transporte,"");//4   
+}
+function generarValoresGrafica2(hoynocircula,fecha,sentimiento,transporte,genero){
     
    // var hoynocircula = "HoyNoCircula";
     //var genero="";
 
     resultados =[];
     console.log(  $("#transporte").val());
-     contarTweets(query_grafica2(hoynocircula,"positive",transporte,genero));
-    contarTweets(query_grafica2(hoynocircula,"negative",transporte,genero));
-    contarTweets(query_grafica2(hoynocircula,"neutral",transporte,genero));
-    contarTweets(query_grafica2(hoynocircula,"ambivalent",transporte,genero));
+    
+    if(sentimiento==""){
+    contarTweets(query_grafica2(hoynocircula,fecha,"positive",transporte,genero));
+    contarTweets(query_grafica2(hoynocircula,fecha,"ne gative",transporte,genero));
+    contarTweets(query_grafica2(hoynocircula,fecha,"neutral",transporte,genero));
+    contarTweets(query_grafica2(hoynocircula,fecha,"ambivalent",transporte,genero));
+    }
+    else{
+        contarTweets(query_grafica2(hoynocircula,fecha,"",transporte,genero));
+
+    }
 
 
     for(var i=0; i<resultados.length; i++){
@@ -329,10 +352,12 @@ function generarValoresGrafica2(hoynocircula,transporte,genero){
 
 
 }
-function query_grafica2(hoynocircula,sentimiento,transporte,genero){
+function query_grafica2(hoynocircula,fecha,sentimiento,transporte,genero){
    // var hoynocircula = "HoyNoCircula";
-    var fecha = " AND posted:2016-04-05";
+    fecha = " AND "+fecha;
+   if(sentimiento!=""){
     sentimiento =  " AND sentiment:" + sentimiento;
+   }
     if(transporte!=""){
         transporte = " AND "+ $("#transporte").val();
     }
