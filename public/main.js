@@ -280,7 +280,7 @@ function generar_query1(){
     var genero = $("#genero").val();
     var transporte = $("#transporte").val();
 
-    generarValoresGrafica2("HoyNoCircula",fecha,"","","");//1
+    return generarValoresGrafica2("HoyNoCircula",fecha,"","","");//1
     
 
 }
@@ -290,7 +290,7 @@ function generar_query2(){
     var genero = $("#genero").val();
     var transporte = $("#transporte").val();
 
-    generarValoresGrafica2("HoyNoCircula",fecha,"",transporte,"");//2
+    return generarValoresGrafica2("HoyNoCircula",fecha,"",transporte,"");//2
     
 }
 function generar_query3(){
@@ -299,7 +299,7 @@ function generar_query3(){
     var genero = $("#genero").val();
     var transporte = $("#transporte").val();
 
-    generarValoresGrafica2("(DobleNoCircula OR DobleHoyNoCircula)",fecha,"","","");//3
+    return generarValoresGrafica2("(DobleNoCircula OR DobleHoyNoCircula)",fecha,"","","");//3
 }
 function generar_query4(){
     var fecha = "posted:2016-04-05";
@@ -307,21 +307,21 @@ function generar_query4(){
     var genero = $("#genero").val();
     var transporte = $("#transporte").val();
 
-   generarValoresGrafica2("HoyNoCircula",fecha,"",transporte,genero);//4   
+   return generarValoresGrafica2("HoyNoCircula",fecha,"",transporte,genero);//4   
 }
 function generar_query5(){
     var fecha = $("#fecha").val();
     var genero = $("#genero").val();
     var transporte = $("#transporte").val();
 
-   generarValoresGrafica2("HoyNoCircula",fecha,"sinsentimientos","","");//4   
+   return generarValoresGrafica2("HoyNoCircula",fecha,"sinsentimientos","","");//4   
 }
 function generar_query6(){
     var fecha = $("#fecha").val();
     var genero = $("#genero").val();
     var transporte = $("#transporte").val();
 
-   generarValoresGrafica2("HoyNoCircula",fecha,"sinsentimientos",transporte,"");//4   
+   return generarValoresGrafica2("HoyNoCircula",fecha,"sinsentimientos",transporte,"");//4   
 }
 function generarValoresGrafica2(hoynocircula,fecha,sentimiento,transporte,genero){
     
@@ -348,7 +348,7 @@ function generarValoresGrafica2(hoynocircula,fecha,sentimiento,transporte,genero
 
     }
     console.log("");
-
+    return resultados;
 
 
 }
