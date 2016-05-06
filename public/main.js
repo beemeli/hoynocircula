@@ -2,6 +2,8 @@
 // IBM Insights for Twitter Demo App
 
 // optimized for speed
+                           
+var resultados = [];
 
 var cellColors = [ "689fd5", "87b2dd", "a3c4e5", "c7ddf3", "e1edfb" ];
 
@@ -265,15 +267,90 @@ function searchTweets(term) {
 	}
 }
 
-function generar_query(){
-    console.log("0: " + generadorquery(0));
-    console.log("1: " + generadorquery(1));
+
+
+function generar_query1(){
+
+    //buscarTweets(generadorquery(0));
+    //contarTweets(generadorquery(0));
+    
+    //generarValoresGrafica1();
+    
+    var genero = $("#genero").val();
+    var transporte = $("#transporte").val();
+
+    generarValoresGrafica2("HoyNoCircula","","");//1
+    
 
 }
+
+function generar_query2(){
+
+    var genero = $("#genero").val();
+    var transporte = $("#transporte").val();
+
+    generarValoresGrafica2("HoyNoCircula",transporte,"");//2
+    
+}
+function generar_query3(){
+
+    var genero = $("#genero").val();
+    var transporte = $("#transporte").val();
+
+    generarValoresGrafica2("(DobleNoCircula OR DobleHoyNoCircula)","","");//3
+}
+function generar_query4(){
+
+    var genero = $("#genero").val();
+    var transporte = $("#transporte").val();
+
+   generarValoresGrafica2("HoyNoCircula",transporte,genero);//4   
+}
+
+function generarValoresGrafica2(hoynocircula,transporte,genero){
+    
+   // var hoynocircula = "HoyNoCircula";
+    //var genero="";
+
+    resultados =[];
+    console.log(  $("#transporte").val());
+     contarTweets(query_grafica2(hoynocircula,"positive",transporte,genero));
+    contarTweets(query_grafica2(hoynocircula,"negative",transporte,genero));
+    contarTweets(query_grafica2(hoynocircula,"neutral",transporte,genero));
+    contarTweets(query_grafica2(hoynocircula,"ambivalent",transporte,genero));
+
+
+    for(var i=0; i<resultados.length; i++){
+            console.log("Resultados2["+ i+"]: " + resultados[i]);
+
+    }
+    console.log("");
+
+
+
+}
+function query_grafica2(hoynocircula,sentimiento,transporte,genero){
+   // var hoynocircula = "HoyNoCircula";
+    var fecha = " AND posted:2016-04-05";
+    sentimiento =  " AND sentiment:" + sentimiento;
+    if(transporte!=""){
+        transporte = " AND "+ $("#transporte").val();
+    }
+    if(genero!=""){
+        genero = " AND gender:"+genero; 
+    }
+    var query = hoynocircula  + fecha  +sentimiento  + transporte + genero ;
+    console.log("2: "+ query);
+    return query;
+}
+
+
+
 
 function generadorquery(opcion){
     var hoynocircula = "HoyNoCircula";
     var fecha = "posted:2016-04-05";
+    
     var query;
             
     switch(opcion){
@@ -288,6 +365,67 @@ function generadorquery(opcion){
             query = hoynocircula + " AND " + fecha  + " AND "+sentimiento;
             break;
         
+        
     }
     return query;
+}
+function buscarTweets(query) {
+	if (query != "") {
+		searchReset();
+		spinnerStart();
+	   	$.ajax({
+			url: "/api/search",
+			type: 'GET',
+			contentType:'application/json',
+			data: {
+				q: query
+			},
+	  		success: function(data) {
+	  			spinnerStop();    
+                                pintarJson(data);
+                                console.log(data);
+                                $("body").html(data);
+
+			},
+			error: function(xhr, textStatus, thrownError) {
+	  			spinnerStop();
+				showError("Error: " + textStatus);
+			}
+		});
+	}
+}
+function pintarJson(data){
+    
+    $("#jsonresult").html(data);
+
+}
+
+function contarTweets(query) {
+	if (query != "") {
+		searchReset();
+		spinnerStart();
+	   	$.ajax({
+			url: "/api/count",
+			type: 'GET',
+                        async: false,
+
+			contentType:'application/json',
+			data: {
+				q: query
+			},
+	  		success: function(data) {
+	  			spinnerStop();
+                                //console.log("contarTweets " + data.count);
+                                displayCount(data.query, data.count);
+
+                                resultados.push(data.count);
+                                return(data.count);
+				//displayCount(data.query, data.count);
+			},
+			error: function(xhr, textStatus, thrownError) {
+	  			spinnerStop();
+				showError("Error: " + textStatus);
+			}
+		});
+	}
 }

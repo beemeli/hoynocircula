@@ -9,17 +9,14 @@
     </head>
     <body>
         <select id="transporte">
-            <option value="auto">Auto</option>
-            <option value="RTP">RTP</option>
-            <option value="metrobus">Metrobus</option>
+            <option value="(auto OR coche OR carro)">Auto</option>
             <option value="metro">Metro</option>
+            <option value="metrobus">Metrobus</option>
             <option value="trenLigero">Tren ligero</option>
-            <option value="uber">Uber</option>
+            <option value="(uber OR cabify)">Uber</option>
             <option value="taxi">Taxi</option>
-            <option value="bicicleta">Bicicleta</option>
-            <option value="camion">Camión</option>
-            <option value="yaxi">Yaxi</option>
-            <option value="cabify">Cabify</option>
+            <option value="(bicicleta OR bici)">Bicicleta</option>
+            <option value="(RTP OR camion)">Camión</option>
         </select>
 <!--HoyNoCircula AND coche AND posted:2016-01-01 AND sentiment:positive AND gender:male-->
         <select id="sentimiento">
@@ -33,10 +30,22 @@
               <option value="female">Mujeres</option>
         </select>
 
-<div  onclick="generar_query()">
-    Generar query
+<div  onclick="generar_query1()">
+    Gráfica 1
 </div>
-
+<div  onclick="generar_query2()">
+    Gráfica 2
+</div>
+<div  onclick="generar_query3()">
+    Gráfica 3
+</div>
+<div  onclick="generar_query4()">
+    Gráfica 4
+</div>
+<div id="jsonresult">
+    
+    
+</div> 
 
         <div style="width:100%;">
             <div class="display_logo">
