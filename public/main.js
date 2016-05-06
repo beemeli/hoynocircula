@@ -266,5 +266,28 @@ function searchTweets(term) {
 }
 
 function generar_query(){
-    
+    console.log("0: " + generadorquery(0));
+    console.log("1: " + generadorquery(1));
+
+}
+
+function generadorquery(opcion){
+    var hoynocircula = "HoyNoCircula";
+    var fecha = "posted:2016-04-05";
+    var query;
+            
+    switch(opcion){
+        case 0: 
+            var transporte =  $("#transporte").val();
+            var sentimiento = "sentiment:"+ $("#sentimiento").val();
+            var genero = "gender:"+ $("#genero").val();
+            query = hoynocircula + " AND " + fecha +" AND " + transporte + " AND "+sentimiento +" AND " +genero;   
+            break;
+        case 1:
+            var sentimiento = "sentiment:"+ $("#sentimiento").val();
+            query = hoynocircula + " AND " + fecha  + " AND "+sentimiento;
+            break;
+        
+    }
+    return query;
 }
