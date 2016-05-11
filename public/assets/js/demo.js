@@ -883,14 +883,14 @@ trenLigero = {
       initChartist: function(){    
       /************TIEMPO********************************/
           //JSON
-         var autos0 = generar_query6("((Tren Ligero)OR trenLigeroi)", "posted:2016-04-05T00:00:00Z,2016-04-05T06:00:00Z");
- 	var autos1 = generar_query6("((Tren Ligero)OR trenLigeroi)", "posted:2016-04-05T06:00:00Z,2016-04-05T09:00:00Z");
- 	var autos2 = generar_query6("((Tren Ligero)OR trenLigeroi)", "posted:2016-04-05T09:00:00Z,2016-04-05T12:00:00Z");
- 	var autos3 = generar_query6("((Tren Ligero)OR trenLigeroi)", "posted:2016-04-05T12:00:00Z,2016-04-05T15:00:00Z");
- 	var autos4 = generar_query6("((Tren Ligero)OR trenLigeroi)", "posted:2016-04-05T15:00:00Z,2016-04-05T18:00:00Z");
- 	var autos5 = generar_query6("((Tren Ligero)OR trenLigeroi)", "posted:2016-04-05T18:00:00Z,2016-04-05T20:00:00Z");
- 	var autos6 = generar_query6("((Tren Ligero)OR trenLigeroi)", "posted:2016-04-05T20:00:00Z,2016-04-05T23:59:59Z");
-         var autos7 = generar_query6("((Tren Ligero)OR trenLigeroi)", "posted:2016-04-05T00:00:00Z,2016-04-05T06:00:00Z");
+         var autos0 = generar_query6("((Tren Ligero)OR trenLigero)", "posted:2016-04-05T00:00:00Z,2016-04-05T06:00:00Z");
+ 	var autos1 = generar_query6("((Tren Ligero)OR trenLigero)", "posted:2016-04-05T06:00:00Z,2016-04-05T09:00:00Z");
+ 	var autos2 = generar_query6("((Tren Ligero)OR trenLigero)", "posted:2016-04-05T09:00:00Z,2016-04-05T12:00:00Z");
+ 	var autos3 = generar_query6("((Tren Ligero)OR trenLigero)", "posted:2016-04-05T12:00:00Z,2016-04-05T15:00:00Z");
+ 	var autos4 = generar_query6("((Tren Ligero)OR trenLigero)", "posted:2016-04-05T15:00:00Z,2016-04-05T18:00:00Z");
+ 	var autos5 = generar_query6("((Tren Ligero)OR trenLigero)", "posted:2016-04-05T18:00:00Z,2016-04-05T20:00:00Z");
+ 	var autos6 = generar_query6("((Tren Ligero)OR trenLigero)", "posted:2016-04-05T20:00:00Z,2016-04-05T23:59:59Z");
+         var autos7 = generar_query6("((Tren Ligero)OR trenLigero)", "posted:2016-04-05T00:00:00Z,2016-04-05T06:00:00Z");
          var autosHorarioTweets = [autos0[0], autos1[0], autos2[0], autos3[0], autos4[0], autos5[0], autos6[0], autos7[0]]
         
        
